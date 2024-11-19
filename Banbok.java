@@ -1,6 +1,8 @@
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.CountDownLatch;
+
 
 public class Banbok {
 
@@ -13,7 +15,10 @@ public class Banbok {
         //sumRandomNumber();
         //nestedLoopTest01();
         //nestedLoopTest02();
-        breakTest01();
+        //breakTest01();
+        //continueTest1();
+        //guessNumber();
+        lotto();
     }
 
     public static void whileTest01() {
@@ -182,5 +187,78 @@ public class Banbok {
         System.out.println("평균" + avg);
         System.out.println("프로그램을 종료합니다~");
         input.close();
+    }
+
+    public static void continueTest1 () {
+        /* 문자열에 'n' 이라는 문자가 몇 번 나오는지 카운트 */
+
+
+
+        String s = "no news is good news";
+        int n = 0; // 문자 'n' 의 객수를 저장하기 위한 변수
+        // for 문을 이용해서 문자열의 첫 글자부터 마지막 글자까지 살펴볼예정
+        // 문자열의 포함된 문자 수는 String 객체의 length() 메서드
+        // 호출해서 알 수 있음
+        // 반복 변수 i = 0 으로 초기화하고, i < s.length() 까지 반복하면서
+        // i를 1씩 증가시키면 된다
+
+        for (int i = 0; i <s.length(); i ++) {
+            /*if (s.charAt(i) == 'n' ){
+                n++;
+            }*/
+            if (s.charAt(i) != 'n') {
+                continue;
+            }
+    }
+
+    System.out.println("문장에서 발견된 'n'의 갯수 :" + n);
+
+    }
+    public static void guessNumber(){
+        // 1에서 100 사이의 정수를 무작위로 생성
+        int answer = (int)(Math.random() * 100+1);
+
+        int guess = 0; //사용자가 추측한 값 저장
+        Scanner input = new Scanner(System.in);
+        int tries = 0; // 몇번을 시도했는지 저장
+
+        //사용자가 정답을 맞출 때 까지 반복
+        System.out.println("숫자 맞추기 게임 시작합니다");
+        do{
+            //사용자로부터 값을 입력받는다.
+            System.out.println("1부터 100사이의 값을 입력하세요 : ");
+            guess = input.nextInt();
+            tries++;
+            //입력받은 값이 정답이면 break
+            if (guess == answer) break;
+            else if (guess > answer){
+                System.out.println("정답을 그 값보다 작은 값이에요");
+            } else {
+                System.out.println("정답은 그 값보다 큰 값이에요");
+            }
+        
+            //정답이 아니면, 힌트를 준더
+        }while(guess != answer); //정답이 아닐때까지 반복 
+        System.out.println("축하합니다. 시도횟수=" + tries);
+    }
+    public static void lotto(){
+        int odds = 1;  // n개 에서 k개의 고르는 활률 값을 누적시키기 위한 변수
+        int n = 45;
+        int k = 6;
+
+        for(int i = 0; i < k ; i++){
+            odds = odds * (n-i)/(i+1);
+        }
+        System.out.println(n +"개에서"+ k +"개를 고르는 확률 : " + odds);
+    }
+    public static void calculatepi(){
+        double divisor = 1.0, dividend =  4.0, pi = 0.0 ;
+        Scanner input = new Scanner(System.in);
+        System.out.print("반복 횟수 입력:");
+        count = input.nextInt();
+
+        for (int)
+
+    }
     }
 }
